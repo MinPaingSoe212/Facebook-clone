@@ -28,21 +28,103 @@ let rightSection=document.querySelector(".right-section")
 let postSelector=document.querySelector("#selection")
 let Btn=document.querySelector(".btn-info")
 let inputStatus=document.querySelector(".input-status")
-
-Btn.addEventListener("click",(e)=>{
-    console.log("lee" )
-    let reader = new FileReader()
-    reader.onload = function(){
-        const img= new Image()
-        img.src=reader.result;
-        console.log(img.src,"helo")
-        document.body.appendChild(img)
-    }
-    reader.readAsDataURL=(document.querySelector("[name='photo']").files[0])
-    console.log(document.querySelector("[name='photo']").files[0])
+let form=document.querySelector("form")
+let file=document.querySelector("#upload-Button")
+let preview=document.querySelector(".image-preview")
+//
+form.addEventListener("submit",(event)=>{
+    event.preventDefault()
+    let inputValue=inputStatus.value
+   console.log(inputValue)
+    let postSelectorValue=postSelector.value;
+    console.log(postSelectorValue)
+    console.log(preview.innerHTML)
     
+    let addNewFeed=` <div class="newfeed">
+    <div class="nf-head">
+        <div class="left-side">
+            <div class="cover"><img src="image/profile4.jpg" class="nf-pf" alt=""></div>
+            <div class="nameAndDate">
+                <span>Shouta</span>
+                <span class="date">11m<i class="fa-solid fa-earth-americas"></i></span>
+            </div>
+        </div>
+        <div class="right text-lg">
+            <i class="fa-solid fa-ellipsis "></i>
+        </div>
+    </div>
+    <div class="status">
+       ${inputValue}
+    </div>
+    <div class="nf-photo">
+       ${preview.innerHTML}
+    </div>
+    <div class="viewreact">
+        <div class="left-react">
+            <img src="image/haha.png" width="20px" alt="">
+            <img src="image/love.png"width="20px" alt="">
+            <img src="image/like.png"width="20px" alt="">
+            <span class="react-span">43</span>
+        </div>
+        <div class="right">
+            <span class="react-span">2 share</span>
+        </div>
+    </div>
+    <div class="react-hr"></div>
+    <div class="giveReact">
+        <button class="Like">
+            <i class="fa-solid fa-thumbs-up react-icon"></i>
+            <span class="react-span">Like</span>
+        </button>
+        <button class="comment">
+            <i class="fa-solid fa-message react-icon"></i>
+            <span class="react-span">Comment</span>
+        </button>
+        <button class="share">
+            <i class="fa-solid fa-share react-icon"></i>
+            <span class="react-span">Share</span>
+        </button>
+    </div>
+    <div class="react-hr"></div>
+    
+    <div class="wirte-comment-section">                        
+        <div class="upper">
+            <img src="image/my-profie.jpg" class="image-circle" alt="">
+            <input type="text" placeholder="Write a comment" class="middle-input-comment">
+            <div class="emoji">
+                <img src="image/emoji.png" alt="">
+                <img src="image/camera.png" alt="">
+                <img src="image/photo.png" alt="">
+            </div>
+        </div>
+        <div class="comment-below-child-lower">
+            <span class="small-text">press enter the post.</span>
+        </div>
+    </div>
+</div>`
+    postDiv.style.display="none"
+middleSection.innerHTML+=addNewFeed;
+leftSection.classList.remove("opacity")
+    middleSection.classList.remove("opacity")
+    postDiv.classList.remove("nonOpacity")
+    rightSection.classList.remove("opacity")
 })
 
+file.addEventListener("change",(event)=>{
+    imagefun(event)
+})
+
+let imagefun=(event)=>{
+    let image=URL.createObjectURL(event.target.files[0])
+console.log(image)
+var newimage=document.createElement("img")
+newimage.classList.add("adj-image")
+preview.innerHTML="";
+newimage.src=image;
+
+preview.appendChild(newimage)
+}
+//
 postBtn.addEventListener("click",()=>{
     postDiv.style.display="block"
     leftSection.classList.add("opacity")
@@ -171,7 +253,7 @@ inputComment.forEach((e,i) => {
             let left=document.querySelectorAll(".left")
             console.log(left[2])
             left[2].innerHTML=""
-           
+          
            })
         })
     })

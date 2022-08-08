@@ -928,7 +928,7 @@ header {
 .post-div{
    
     width:500px;
-    height: 400px;
+    height: auto;
     background-color: var(--white);
     border-radius: 6px;
     box-shadow: 1px 1px 1px 1px rgba(200, 198, 198, 0.612);
@@ -983,4 +983,11 @@ header {
 }
 input[type="file"]{
     display: none;
+}
+.image-preview {
+    margin-left:10px;
+    width:100px;
+}
+.adj-image {
+    width:100%;
 }
