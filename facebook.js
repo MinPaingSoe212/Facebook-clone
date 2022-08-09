@@ -67,7 +67,7 @@ form.addEventListener("submit",(event)=>{
             <span class="react-span">43</span>
         </div>
         <div class="right">
-            <span class="react-span">2 share</span>
+            <span class="react-span"></span>
         </div>
     </div>
     <div class="react-hr"></div>
@@ -108,13 +108,11 @@ leftSection.classList.remove("opacity")
     middleSection.classList.remove("opacity")
     postDiv.classList.remove("nonOpacity")
     rightSection.classList.remove("opacity")
+
 })
 
 file.addEventListener("change",(event)=>{
-    imagefun(event)
-})
-
-let imagefun=(event)=>{
+    
     let image=URL.createObjectURL(event.target.files[0])
 console.log(image)
 var newimage=document.createElement("img")
@@ -123,7 +121,9 @@ preview.innerHTML="";
 newimage.src=image;
 
 preview.appendChild(newimage)
-}
+})
+
+
 //
 postBtn.addEventListener("click",()=>{
     postDiv.style.display="block"
@@ -271,8 +271,7 @@ for (let i = 0; i < commentBtn.length; i++) {
     })
     
 }
-//post
 
-
+// validtion Code For Inputs
 
 
